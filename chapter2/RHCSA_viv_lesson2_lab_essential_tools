@@ -1,0 +1,26 @@
+
+Lesson 2 lab; Using essential tools
+
+1. locate the man page that shows how to set a password
+A: man -k password | grep 1 (search failed) use man useradd and scroll to see related comamnds.
+$sudo -   
+$useradd anna
+$passwd anna --> change password
+
+2. Use the man page for useradd and as root, create a user with the name anna
+A: $man passwd
+
+3. set the password for user anna to "password"
+A: $passwd anna
+	prompt new password
+
+4. use cd /etc to make etc your current directory
+
+5. Use globbing and ls to show all files in etc/ that have a number in ther name
+A: $ls -d *[0-9]*
+
+6. Still from /etc, use the command ls -l. Use a pipe to display the results page by page. Next, type cd without any arguments
+A: $ls -l | less
+
+7. Use vim to create a file with the name users, and make sure that is contains the name Alex, Alexander, Linda and Belinda on separate lines.
+A: $vim users

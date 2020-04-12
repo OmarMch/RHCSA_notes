@@ -1,0 +1,37 @@
+
+To search for any file in / with the exact name hosts
+
+	#find / -name "hosts"
+
+To search for any file in / containing the word "host" in their name:
+( globbing is used.)
+	
+	#find / -name "*host*"
+
+To search for a file type in / that is bigger that 100M in size:
+(type -f denotes filetype of file)
+	
+	#find / -type f -size +100M
+
+
+
+This command line points to /etc for find:
+Then -exec points to grep to filter and print only names of files with selected lines (-l), using the string student.
+The curly braces {} are used to expand on what is found.
+\; delimits the end of the exec command. (\ used as an escape character)
+
+	#find /etc -exec grep -l student {} \;
+
+	similar command:
+
+	#grep -l student /etc/* 2>/dev/null
+
+2>/dev/null ---> redirects error messages to null, so that the output is cleaner.
+
+
+
+Finds in /etc all files that are bigger than 100 characters (100bytes), and on these files, grep -l student Will give us all the names that have the word student within the file.
+cp {} /tmp will redirect expanded results and copy them to /tmp
+2>/dev/null, redirect error messages to null.
+	
+	#find /etc -size +100c -exec grep -l student {} \; -exec cp {} /tmp \; 2>/dev/null

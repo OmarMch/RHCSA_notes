@@ -1,0 +1,270 @@
+
+----2.1 Getting started on the CLI:
+
+- pwd : shows which directory am I in
+- whoami : shows current user name
+- ls : lists files in the current directory
+- ip address show : shows current IP configuration
+- free -m : shows how much memory you have
+- df -h : shows available disk space (-h human readable)
+- cat /etc/hosts : shows the contents of a file
+
+----2.2 Working with the bash shell:
+
+- To access history commands, use ![num_command], or Ctrl r for a 
+reverse search of commands.
+ - Pipelines: The capability of commands to 
+read data from standard input and send to standard output is utilized by 
+a shell feature called pipelines. Using the pipe operator | (vertical 
+bar), the standard output of one command can be piped" into the standard 
+input of another.
+	$ ls /usr/bin | less
+
+- Redirecting standard output: To redirect standard output to another 
+file instead of the screen, we use the > redirection operator, followed 
+by the name of the file. EX, we could tell the shell to send the output 
+of the ls command to the file ls-output.txt instead.
+	$ ls -l /usr/bin > ls-output.txt
+
+- The Environment:
+The shell maintains a body of information during our shell session called the
+environment. Programs use data stored in the environment to determine facts
+about the system's configuration. While most programs use config files to
+ store program settings, some programs also look for values stored in the 
+environment to adjust their shell behavior.
+
+- Aliases:
+An alias, aliases are commands that we can define ourselves, built from
+other commands.
+
+- Shell scripts:
+A shell script is a file containing a series of commands. The shell reads
+this file and carries out the commands as though they have been entered directly
+on the command line.
+
+
+----2.3 I/O redirection:
+
+By default, when a command is executed, it shows its results on the screen of 
+the computer you're working on. The computer monitor is used as the standard destination output, which is also referred to as the STDOUT. The shell also has default destinations to send error messages and to accept input.
+
+Name	Default_destination	Use_in_redirection	File_descriptor_Number
+-------------------------------------------------------------------------------
+STDIN	Computer keyboard	<(same as 0<)		0
+STDOUT	computer monitor	>(same as 1>)		1
+STDERR	computer monitor	2>			2
+
+Redirection is also useful if you want to work with input from an alternative location, such as a file.
+By default, these file_descriptors are connected to the keyboard and screen. If you use redirection symbols such as <,> and |, the shell connects the file_descriptors to files or other commands.
+
+Redirector	Explanation
+-------------------------------------------------------------------------------
+->(same as1>)	Redirects STDOUT. if redirection is to a file, the current contents of that file are overwritten.
+
+>>(same as 1>>)	Redirects STDOUT. if output is written to a file, the output is appended to that file
+
+2>		Redirects STDERR
+
+2>&1		Redirects STDERR to the same destination as STDOUT. This has to be used in combination with normal output redirection, as in
+		$ ls whuhiu > errout 2>&1
+
+In I/O redirection, files can be used to replace STDOUT, STDIN, STDERR.
+
+
+
+----2.5 Understanding the Linux file system Hierarchy:
+
+Simplified overview of Directory hierarchy
+/
+├── bin
+├── boot
+├── dev
+├── etc
+├── home
+├── lib
+├── media
+├── mnt
+├── opt
+├── proc
+├── root
+├── sbin
+├── sys
+├── tmp
+├── usr --bin/ --man/ --lib/ --local/ --sbin/ --share/
+├── var --log/ --tmp/
+
+
+* /bin	-Contains ready to run programs (executables), including most of the 
+basic Unix commands. such as ls and cp. Most programs in /bin are in binary 
+format, having been created by a C compiler, but some are shell scripts in 
+modern systems.
+
+* /dev	-Contains device files
+
+* /etc	-Core configuration directory, contains user password, boot, device, 
+networking and other setup files. Many files here are specific to the 
+machine's hardware.
+
+* /home	-Holds personal directories for regular users. Most Unix installs 
+conform to this standard
+
+* /lib	-An abbreviation for library, this directory hold library files 
+containing code that executables can use. There are two types of libraries: 
+static and shared. The /lib directory should only contain shared libraries.
+
+* /proc	-Provides system statistics through a browsable directory-and-file 
+interface. The /proc directory contains information about currently running 
+processes as well as some kernel parameters.
+
+* /sys	-This directory is similar to /proc in that it provides a device and 
+system interface. 
+
+* /sbin	-System executables reside here. Programs in /sbin directory relate 
+to system management. Many of the utilities here will not work if you're not 
+running them as root.
+
+* /tmp	-Storage are for temporary files, any user can read and write to 
+/temp, but a user cannot access another user's files. Note: most distros 
+clear /tmp when the machine boots and some even remove its old files 
+regularly. (Also don't let tmp fill up as it shares space with the rest of /)
+
+* /usr	-This dir does not contain user files, Instead it contains a large 
+directory hierarchy, including the bulk of the Linux system. Many of the dir 
+names in /usr are the same as those in the root directory (like /usr/bin and 
+/usr/lib), and they hold the same type of files.
+
+* /var	-The variable directory, where programs record runtime information, 
+system logging, user tracking, caches and other files that system programs 
+create and manage here. (/var/tmp here doesn't get wiped on boot).
+
+* /boot	-Contains kernel boot loader-files. These files pertain only to the 
+very first stage of the Linux startup procedure.
+
+*/media	-A base attachment point for removable media such as flash drives, 
+this dir is found in many distributions.
+
+* /opt	-This may contain additional third-party software. Most systems don;t 
+use /opt.
+
+
+---2.6 man
+
+man is the system's manual pager. Each page argument given to man is normally the name of a program, utility or function
+
+The table below shows the section number of the manual followed by the types of pages they contain;
+
+	1 Executable programs or shell commands
+	2 system calls functions provided by the kernel)
+	3 library calls (functions within program libraries)
+	4 special files (usually found in /dev)
+	5 file formats and conventions eg /etc/passwd
+	6 games
+	7 Miscellaneous (including macro packages and conventions)
+	8 System administration commands (usually only for root)
+	9 Kernel routines [non standard]
+
+NOTE: how to see all man pages per section? use these two commands:
+	1 $ apropos -s 2 .	#use an regex for apropos . means anything
+	2 $ man -k . | grep -F '(2)'
+
+
+--2.7-2.8 Vim
+
+Vim is a text editor that is backwards compatible with vi. It can be used to edit all kinds of plain text. It is especially useful for editing programs.
+
+Useful commands:
+
+	* Esc	-Switch to command mode
+	* i,a, 	-Switch to insert mode
+	* o	-open(append) blank line below current line
+	* :wq	-write the file(save) and quit
+	* :q!	-quit and throw away changes
+	* dd	-delete (cut) a line
+	* yy	-yank(copy) a line
+	* p	-put (paste) the clipboard after cursor
+	* v	-visual mode, mark lines, then do command (such as y-yank)
+	* u	-undo
+	* Ctrl-r -redo
+	* gg	-brings cursor to the first line of doc
+	* G	-brings cursor to end of doc
+	* /pattern 	-search for pattern
+	* ?pattern	-search backwards for pattern
+	* ^	-bring cursor to beginning of current line
+	* $	-bring cursor to end of current line
+	* %s/old/new/g	-replace all old with new throughout file
+
+
+---2.10 using Globbing and Wildcards:
+
+* Globbing is a feature that helps matching file and directory names. This is similar to the concept of wildcards in other systems.
+The simplest of these is the glob character * ,which tells the shell to match any number of arbitrary characters.
+
+	at*	-expands to all filenames that start with at
+	*at	-expands to all filenames that end with at
+	*at*	-expands to all filenames that contain at
+
+NOTE: If you're used to MS-DOS, you might find to type *.* to match all files. Break this habit now. In Linux and other versions of UNIX, you must use * to match all files. In the Unix shell *.* matches only files and dirs containing the dot (.) character in their names. Unix file-names DO NOT need extensions and often do not carry them.
+
+
+* Not to be confused with regular expressions, which help finding text patterns* see man 7 glob
+
+
+
+
+--2.11 using cockpit
+
+Cockpit is an interactive server admin interface. it is ready to use and lightweight. Cockpit interacts directly with the operating system from a real Linux session in a browser.
+
+Cockpit is included in CentOs 7.x:
+	1. $sudo yum/dnf install cockpit
+	2. $sudo systemctl enable --now cockpit.socket
+	   $systemctl status cockpit.socket
+	3. $sudo firewall-cmd --permanent --zone=public --add-service=cockpit
+	   $sudo firewall-cmd --reload
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

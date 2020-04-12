@@ -1,0 +1,23 @@
+
+
+1. cd to /tmp then use $mkdir -p /files/pictures files/photos files/videos
+(THe -p flag, makes parent directories as needed.
+
+2. use cp like: $cp /etc/[a..c]* /tmp/files
+
+3. $mv /tmp/files/[a..b]* /tmp/files/photos 
+   $mv /tmp/files/c* /tmp/files/videos
+
+4. find /exec -size 1000c -exec cp {} /tmp/files/pictures \;
+(size "c", denotes bytes)
+
+5. ln -s /var /tmp/files/my_var_link
+(ls -il /var /tmp/files/my_var_link) -->to verify inode number etc.
+
+6 tar --exlude=".*" -czvf stu3_home.tar.gz /home/student3
+(--exclude".*" excludes all dot(.) directories from being in the archive)
+(z is for gzip compression)
+
+(create /tmp/archive folder before this:)
+7 tar xzvf stu3_home.tar.gz -C /tmp/archive
+(-C is to extract to a specific directory)

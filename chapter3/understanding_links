@@ -1,0 +1,70 @@
+Links:
+
+Undertanding Links:
+
+* LInks are pointers to files in a different location
+* Compare to shortcuts on other operating systems
+* LInks can be useful to make the same file available on multiple locations
+* Linux uses hard links and symbolic links
+* Create hard links with ln and symbolic links with ln -s
+* Symbolic links make sure that information that is needed is always available.
+
+to know:
+
+Inode: A data structute describing a file-system object (e.g. file directory) that stores the attributes and disk block(s) locations of the object data.
+
+THe inode(index node) is a data structute in an Unix-like file system that describes a file-system object such as a file or a directory. Each inode stores the attributes and disk block locations of the object's data.
+Directories are lists of names assigned to inodes. A directory contains an entry for itself, its parent and each of its children.
+
+
+working with links examples:
+
+	#ls -il /etc/hosts
+	134436 -rw-r--r--. 1 root root 158 Sep 10  2018 /etc/hosts
+
+NOte: The -i will display the inode number.
+
+Creating a hardlink to the etc/hosts file, Using any name and path?review later.The files are essentially the same, if you edit one; it reflects on the other.
+
+	#ln /etc/hosts /root/hardhosts
+	
+To verify the hardlink has the same properties and inode number, add path to hardlink.
+	
+	#ls -il /etc/hosts /root/hardhosts
+	
+	134436 -rw-r--r--. 2 root root 158 Sep 10  2018 /etc/hosts
+	134436 -rw-r--r--. 2 root root 158 Sep 10  2018 /root/hardhosts
+
+---Symbolic links
+
+When creating symbolic links, you must specify an absolute path.
+
+	#ln -s /etc/hosts symhosts
+
+	verify:
+	#ls -il /etc/hosts /root/hardhosts /root/symhosts
+	
+	134436 -rw-r--r--. 2 root root 158 Sep 10  2018 /etc/hosts
+  	134436 -rw-r--r--. 2 root root 158 Sep 10  2018 /root/hardhosts
+	17838247 lrwxrwxrwx. 1 root root  10 Apr  8 17:28 /root/symhosts -> /etc/hosts
+
+Note: The name of the file is the only thing that is stored by symbolic links, 8bytes here.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

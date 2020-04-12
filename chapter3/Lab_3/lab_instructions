@@ -1,0 +1,26 @@
+
+
+Lab 3, Essential file management tools:
+
+1. Create a directory structute /tmp/files/pictures, /tmp/files/photos and /tmp/files/viveos
+
+2. Copy all files that have a name starting with an a or b or c from /etc to /tmp/files
+
+3. From /tmp/files, move all files that have a name starting with an a or b to /tmp/files/photos, and files with a name starting with a c to /tmp/files/videos
+
+4. Find all files in /etc that have a size smaller than 1000 bytes and copy those to /tmp/pictures
+
+5. In tmp/files, create a symbolic link to /var
+
+6. Create a compressed archive file of the /home directory
+
+7. Extract this compressed archive with relative file names in /tpm/archive
+
+
+
+
+
+
+
+
+
