@@ -1,0 +1,50 @@
+﻿chapter 1 Notes:
+
+Using red hat enterprise Linux
+
+the most important things that you get in the official RHEL 8 server release is access to the red hat portal. IN addition to updates provided through the Red Hat Network, in particular the Red Hat knowledge base in invaluable
+
+ *CentOs is the community Enterprise Operating System. CentOS started as a recompiled version of RHEL, with all the items that were no available for free removed from the RHEL software.
+
+ *Another distribution related to RHEL is fedora, a completely free source distribution that is available for free. Red Hat uses fedora as the development platform for RHEL. Fedora is a testing ground for RHEL, which is why you shouldn't use for studying RHCSA.
+
+REPOSITORIES----------------------------------------------------------------------
+
+*A repository is the installation source used to installing software. If you're using free software such as Centos, correct repositories are set up automatically and no further action is required.
+If you're using Red Hat enterprise Linux, with a subscription, you'll need the subscription manager software to get access to repositories.
+
+
+SETUP REQUIREMENTS----------------------------------------------------------------
+
+RHEL8
+	*1GB RAM
+	*10GB disk
+	*NIC
+
+RHEL8 book exercises requirements:
+	*64-bit platform
+	*2GiB RAM
+	*20GB disk
+	*physical dvd drive or virtual
+	*a NIC
+
+Note: The advantage of using the server with a GUI installation pattern is that it provides an easy to use interface, also some tools discussed here only run on a GUI, and you can use multiple terminal windows.
+
+
+INSTALL NOTE:
+RHEL8 by default uses the XFS filesystem. This system cannot be shrunk it can only be expanded, therefore it is sometimes a better choice to use ext4.
+
+
+INSTALL-NETWORKING:
+you must configure a network interface and enable it during OS install, otherwise your server might not be able to connect to any network.
+
+
+
+
+
+
+
+
+
+
+
